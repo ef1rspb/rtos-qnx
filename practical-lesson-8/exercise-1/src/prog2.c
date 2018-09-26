@@ -21,22 +21,16 @@ struct MESSAGE
     unsigned int buf;
 };
 
-struct PULSE
-{
-	unsigned int code;
-	unsigned int value;
-};
-
 int coid;
 
 void *Display() {
     struct MESSAGE msg;
-    struct PULSE pulse;
+    struct _pulse pulse;
     int chid, x_cnt, y_cnt, z_cnt;
     x_cnt = y_cnt = z_cnt = 0;
     int changed = 0;
+
     chid = ChannelCreate(0);
-    unsigned char rmsg;
     printf("Создан канал %d\n ", chid);
 
     // Инициализация датчиков координат X,Y,Z
@@ -49,24 +43,22 @@ void *Display() {
 
     for(;;)
     {
-    	sleep(1);
         MsgReceivePulse(chid, &pulse, sizeof(pulse), NULL);
-        printf("%u ", pulse.code);
 
         switch(pulse.code)
         {
         case B_X:                       // Если изменилась координата X.
-            x_cnt = pulse.value;
+            x_cnt = pulse.value.sival_int;
             changed = 1;
             break;
 
         case B_Y:                       // Если изменилась координата Y.
-            y_cnt = pulse.value;
+            y_cnt = pulse.value.sival_int;
             changed = 1;
             break;
 
         case B_Z:                       // Если изменилась координата Z.
-            z_cnt = pulse.value;
+            z_cnt = pulse.value.sival_int;
             changed = 1;
             break;
 
