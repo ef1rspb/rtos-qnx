@@ -51,6 +51,11 @@ void* Display()
 
     act.sa_mask = set; // Маска сигналов.
     act.sa_handler = &handler; // Указать обработчик сигналов.
+    /*
+    Если в sa_flags указан SA_SIGINFO,
+    то sa_sigaction (вместо sa_handler) задаёт функцию обработки сигнала signum.
+    В первом аргументе функция принимает номер сигнала
+     */
     act.sa_flags = SA_SIGINFO;
 
     /* Установить связь между получением

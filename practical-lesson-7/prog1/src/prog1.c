@@ -44,11 +44,18 @@ int main()
 
         switch(ch[0])
         {
+        case 'E':
+        	return EXIT_SUCCESS;
+        	break;
         case 'I':
             // Двигаться в начальное положение по всем координатам
             // и сбросить значения датчиков положений.
-            PA = 0; PC = 0; //Для этого сбросить в 0 переменные PA и PC.
-            command ='C'; //Подать команду записи в регистр PC роботу Roby.
+            PA = 0;
+            msg.buf = PA;
+            msg.type = 0;
+            MsgSend(coid, &msg, sizeof(msg), NULL, 0);
+            PC = 0; // Для этого сбросить в 0 переменные PA и PC.
+            command ='C'; // Подать команду записи в регистр PC роботу Roby.
             break;
 
         case '+': case '=':
@@ -141,6 +148,6 @@ int main()
                     break;
             }
 
-    }  while(true);
+    }  while(1);
 
 }

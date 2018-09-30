@@ -43,6 +43,7 @@ void *Display() {
 
     for(;;)
     {
+    	// Приём испульсных сообщений по открытому каналу chid:
         MsgReceivePulse(chid, &pulse, sizeof(pulse), NULL);
 
         switch(pulse.code)
