@@ -17,7 +17,9 @@
 7. `Window - Show view - Target file system navigator` ![Target file system navigator](/getting-started/show-target-fs.png).
 
 8. Перед собой вы видем структуру файловой системы вирт. машины `Neutrino`, в какой-то из папок необходимо разместить исполняемый файл `robotNew`, я выбрал `/home/qnxuser`. Перетаскиваем файл robotNew из корня репозитория в Momentics в выбранную папку.
+![Target file system](/getting-started/target-fs.png)<br/>
 9. В вирт. машине переходим в папку командой `cd`, запускаем робот-эмулятор `./robotNew`. Робот отобразит свои начальные координаты.
+![Run robot](/getting-started/run-robot.png)<br/>
 10. В Momentics открываем один из проектов через `File - Open projects from file system`. Указываем путь до проекта, открываем, запускаем через `Run`, дебажитим через `Debug`.
 
 # Остались вопросы?
